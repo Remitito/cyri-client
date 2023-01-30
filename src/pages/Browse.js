@@ -32,7 +32,7 @@ const Browse = () => {
             setState(oldValue => ({...oldValue, 
                 totalPages: 0,
             })) 
-            axios.post('https://cyri-api.onrender.com/count', {
+            axios.post('https://can-you-read-it-api.onrender.com/count', {
                 level: selectedLevel
             })
             .then(response => {
@@ -55,7 +55,7 @@ const Browse = () => {
         setState(oldValue => ({...oldValue,  // clear current texts
                 currentTexts: []
         }))
-        axios.post('https://cyri-api.onrender.com/browse', {
+        axios.post('https://can-you-read-it-api.onrender.com/browse', {
             pageNum: pageNum,
             level: level
           })

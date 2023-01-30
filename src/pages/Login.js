@@ -53,7 +53,7 @@ const Login = () => {
         return
       }
       console.log(state)
-      axios.post('https://cyri-api.onrender.com/login', {
+      axios.post('https://can-you-read-it-api.onrender.com/login', {
         state: state
       })
       .then(response => handleResponse(response))

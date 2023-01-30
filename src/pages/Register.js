@@ -51,7 +51,7 @@ const Register = () => {
         setError("You did not answer the bottom question correctly")
         return
       }
-      axios.post('https://cyri-api.onrender.com/register', {
+      axios.post('https://can-you-read-it-api.onrender.com/register', {
           state: state,
       })
       .then(loginUser)
@@ -61,7 +61,7 @@ const Register = () => {
     }   
 
     const loginUser = () => {
-      axios.post('https://cyri-api.onrender.com/login', {
+      axios.post('https://can-you-read-it-api.onrender.com/login', {
           state: state,
       }).then(response => handleLoginResponse(response.data))
     }

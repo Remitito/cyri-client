@@ -32,7 +32,7 @@ const ViewPage = () => {
   useEffect(() => {
       axios({
         method: 'post',
-        url: `https://cyri-api.onrender.com/getOne`,
+        url: `https://can-you-read-it-api.onrender.com/getOne`,
         headers: {},
         data: {
           id: pageId,
@@ -55,14 +55,14 @@ const ViewPage = () => {
     const nextPage = () => {
       axios({
         method: 'post',
-        url: `https://cyri-api.onrender.com/getNext`,
+        url: `https://can-you-read-it-api.onrender.com/getNext`,
         headers: {},
         data: {
           id: pageId,
           level: page.level
         } 
       }).then((response) => {
-        window.location.assign(`https://cyri-api.onrender.com/pages/${response.data._id}`)
+        window.location.assign(`https://can-you-read-it-api.onrender.com/pages/${response.data._id}`)
       })
     }
 

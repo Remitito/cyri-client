@@ -37,7 +37,7 @@ const Check = () => {
       setError("Text must be at least 30 characters in length")
       return;
     }
-    axios.post('https://cyri-api.onrender.com/check', {
+    axios.post('https://can-you-read-it-api.onrender.com/check', {
       text: state.text,
       language: 'english',
     })
@@ -86,7 +86,7 @@ const Check = () => {
     if(state.title.length > 30) {
       setError("Title can be a maximum of 30 characters")
     }
-    axios.post('https://cyri-api.onrender.com/check/share', {
+    axios.post('https://can-you-read-it-api.onrender.com/check/share', {
       state: state,
     })
     .then(setState(initialState))

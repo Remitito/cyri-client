@@ -31,7 +31,7 @@ const Password = () => {
         setError("Password must be between 6-20 characters and contain at least one number, uppercase letter, lowercase letter, and special character")
         return
       }
-      axios.post('https://cyri-api.onrender.com/user/password', {
+      axios.post('https://can-you-read-it-api.onrender.com/user/password', {
           state: state,
           token: localStorage.getItem('token'),
           username: localStorage.getItem('user'),
