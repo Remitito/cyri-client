@@ -1,0 +1,55 @@
+@import url('https://fonts.googleapis.com/css2?family=Arima:wght@200&family=Bebas+Neue&family=Caveat&family=Dancing+Script&family=Open+Sans&family=Josefin+Sans:ital,wght@1,300&family=Kanit:wght@300;400&family=Playfair+Display&family=Raleway:wght@500&family=Rubik+Moonrocks&display=swap');
+
+
+.bebasNeue {
+  font-family: 'Bebas Neue', cursive;
+}
+.dancingScript {
+  font-family: 'Dancing Script', cursive;
+  font-weight: 500;
+  font-size: xx-large;
+}
+.josefinSans {
+  font-family: 'Josefin Sans', sans-serif;
+  font-weight: 900;
+}
+.openSans {
+  font-family: 'Open Sans', sans-serif;
+}
+
+.rubixMoonrocks {
+  font-family: 'Rubik Moonrocks', cursive;
+  font-size: xx-large;
+  font-weight: 900;
+  color: #f7e5a3;
+}
+.playfair {
+  font-size: xx-large;
+  font-weight:bolder;
+  color: #f7e5a3;
+}
+
+.arima {
+  font-family: 'Arima', cursive;
+}
+
+.kanit {
+  font-family: 'Kanit', sans-serif;
+  font-size: large;
+  font-size: xx-large;
+  font-weight:bolder;
+}
+
+.kanitSmaller {
+  font-family: 'Kanit', sans-serif;
+  font-size: xx-large;
+}
+
+.raleway {
+  font-family: 'Raleway', sans-serif;
+}
+
+.ralewayHome {
+  font-family: 'Raleway', sans-serif;
+  font-size: large;
+}
