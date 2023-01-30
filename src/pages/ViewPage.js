@@ -62,7 +62,7 @@ const ViewPage = () => {
           level: page.level
         } 
       }).then((response) => {
-        window.location.assign(`https://can-you-read-it-api.onrender.com/pages/${response.data._id}`)
+        window.location.assign(`https://can-you-read-it-atd5.onrender.com/pages/${response.data._id}`)
       })
     }
 
