@@ -12,6 +12,22 @@ export const FormRow = styled.div `
     font-size: ${props => props.fontSize ? props.fontSize : ""};
 `
 
+export const Author = styled.div `
+    background-color: #49426c;
+    color: #ebc88b;
+    font-size: large;
+    height: 70px;
+    width: 250px;
+    text-decoration: none;
+    text-align: center;
+    line-height: 4.5rem;
+    border-radius: 1rem;
+    &:hover{
+        color: #9c7e38;
+        transition: 0.2s ease-in;
+    }
+`
+
 export const TextUrl = styled.a `
 text-decoration: none;
   &:hover {

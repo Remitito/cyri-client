@@ -1,7 +1,7 @@
 import {Navigate, useParams} from 'react-router-dom'
 import { useEffect, useState, useContext } from 'react';
 import axios from 'axios'
-import { TextWrapper, TextWrapperRow, TextWrapperColumn, 
+import { TextWrapper, TextWrapperRow, TextWrapperColumn, Author, 
   MainText, LogoWrapper, BottomRow, StarWrapper, Star, PageInfo, TableCategory,
   BigButton, SmallButton, Website, FormRow, Loading, LinkInfo, TextUrl, TextUrlCont } from '../components/ViewPageStyle';
 import LoadingSpinner from '../components/spinner/spinner';
@@ -84,10 +84,8 @@ const ViewPage = () => {
             </LogoWrapper>
           </TextWrapperColumn>
           <h2>{page.title}</h2>
-          <LogoWrapper onClick={nextPage}>
-              <IoArrowRedoOutline size={50}/>
-              Next {page.level} Text
-          </LogoWrapper>
+          <Author>Written by: {page.user} 
+          </Author>
         </TextWrapperRow>
         <FormRow fontSize="1.4rem">
           {page.url.length > 0 ?
@@ -102,8 +100,7 @@ const ViewPage = () => {
               </LinkInfo>
             }
           </>
-          : <PageInfo>Text written by: {page.user} 
-          </PageInfo>}
+          : <></>}
         </FormRow>
         <MainText id="mainText" className='arima'>
           {page.text}...

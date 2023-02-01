@@ -97,8 +97,7 @@ const Browse = () => {
         <TableData id="textTitle" className='bebasNeue'>
             {text.title}
         </TableData> 
-        {/* <TableDate>Uploaded by {text.user} on {text.dateString}</TableDate> */}
-        <TableDate>Uploaded by TestUser</TableDate>
+        <TableDate>Uploaded by {text.user} on {text.dateString}</TableDate>
         <TableCategory className='rubixMoonrocks' value={text.level}
         backgroundColor={levelColors[levels.indexOf(text.level)]}
         onClick={(e) => changeLevel(text.level)}>

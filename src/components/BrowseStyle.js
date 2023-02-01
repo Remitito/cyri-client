@@ -132,9 +132,12 @@ export const TableButtonDiv = styled.div`
     text-align: center;
 `
 
+
+
 export const TableDate = styled.div `
     margin: auto;
-    width: 20%;
+    width: 15%;
+    text-align: center;
 
     @media screen and (max-width: 960px) {
         display: none;
