@@ -113,24 +113,7 @@ const Check = () => {
   }
 
   return (
-    <FormWrapper height={state.show === "form" ? "100vh" : "100vh"}>
-      {!localStorage.getItem('user') ?
-      <ErrorWrapper>
-        <FormInfo className='josefinSans'>Please login if you wish to check a text's level</FormInfo>
-        <ErrorRow>
-          <NavMenuItem>
-            <BigButton as={NavLink} to="/login" className='bebasNeue'>
-            Login
-            </BigButton>
-          </NavMenuItem>
-          <NavMenuItem>
-            <BigButton as={NavLink} to="/register" className='bebasNeue'>
-            Register
-            </BigButton>
-          </NavMenuItem>
-        </ErrorRow>
-      </ErrorWrapper>
-      :
+    <FormWrapper>
       <Form className='josefinSans form" ? ' onSubmit={handleSubmit}>
         {state.show === "form" ? 
         <>
@@ -190,7 +173,6 @@ const Check = () => {
         </>
           }
       </Form>
-}
     </FormWrapper>
   );
 };

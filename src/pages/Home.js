@@ -2,6 +2,8 @@ import { Container, Row, BigButton, ContInfo, NavMenu, NavMenuItem } from "../co
 import {NavLink} from 'react-router-dom'
 import { ActionContext } from '../UserContext'
 import { useContext } from "react";
+import '../stylesheets/home.css'
+import { GiRead } from "react-icons/gi";
 import axios from 'axios'
 
 
@@ -11,10 +13,10 @@ const Home = () => {
   return (
       <Container width={"60%"}>
         <ContInfo>
+          <GiRead className="icon" size={70} color="#ebc88b"/>
         {action == "share" ? <h2 style={{color: "#9c7e38", textDecoration: "underline"}}>Your Text Has Been Successfully Uploaded!</h2> : 
         <h2 className="kanit">Welcome to Can You Read It!</h2>}
-          <p className="ralewayHome">Guests can browse online texts sorted by CEFR level (A1 - C2)</p>
-          <p className="ralewayHome">Registered users can also check a text's CEFR level</p>
+          <label className="ralewayHome">Check the CEFR level (A1 - C2) of a digital text or browse other texts of the same level</label>
         </ContInfo>
         <Row>
         <NavMenu>

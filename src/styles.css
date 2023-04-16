@@ -1,6 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Arima:wght@200&family=Bebas+Neue&family=Caveat&family=Dancing+Script&family=Open+Sans&family=Josefin+Sans:ital,wght@1,300&family=Kanit:wght@300;400&family=Playfair+Display&family=Raleway:wght@500&family=Rubik+Moonrocks&display=swap');
 
 
+body {
+  margin: 0px;
+}
+
 .bebasNeue {
   font-family: 'Bebas Neue', cursive;
 }
