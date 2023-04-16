@@ -3,7 +3,7 @@ import axios from 'axios'
 import {Container, Column, ColumnItem, 
     Row, BigButton, Table, TableBody, TableRow, SmallButton,
     TableData, TableCategory, TitleSection, Title, ArrowWrapper, PageLabel, TableHeader,
-    TableButton, TableButtonDiv, TableDate, Loading, PageNavWrapper, TopRow} from '../components/BrowseStyle'
+    TableButton, TableButtonDiv, TableDate, Loading, LoadingMessage, PageNavWrapper, TopRow} from '../components/BrowseStyle'
 import LoadingSpinner from '../components/spinner/spinner'
 import { IoIosArrowDropleft, IoIosArrowDropright} from "react-icons/io";
 import {NavLink} from 'react-router-dom'
@@ -180,8 +180,12 @@ const Browse = () => {
                         </TableBody>
                     </Table>
                 </Container>
-            :   <Loading className='bebasNeue'>
-            Loading...<LoadingSpinner/></Loading>}
+            :   
+            <>
+            <Loading className='bebasNeue'>
+            Loading... <LoadingSpinner/></Loading>
+            <LoadingMessage>If you are a first time user, it might take a moment to load.</LoadingMessage>
+            </>}
         </>
     )}
 

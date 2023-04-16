@@ -184,6 +184,13 @@ export const Loading = styled.h1 `
     justify-content: space-between;
 `
 
+export const LoadingMessage = styled.h3 `
+    margin: auto;
+    text-align: center;
+    margin-top: 20px;
+    width: 400px;
+`
+
 
 
 export const ArrowWrapper = styled.div `
