@@ -14,6 +14,7 @@ const initialState = {
     level: "all",
     page: 0, // page when viewing all texts
     totalPages: 0,
+    retryCount: 0
   }
 
 const Browse = () => {
@@ -22,20 +23,26 @@ const Browse = () => {
     const levels = ["A1", "A2", "B1", "B2", "C1", "C2"]
     const [state, setState] = useState(initialState)
 
-    useEffect(() => { // get texts from all levels on start
-        getTexts(0, "all")
-        getPageCount("all") 
+    useEffect(() => {
         setTimeout(() => {
-            if(state.currentTexts.length === 0) { // in case it doesn't load initially
-                getTexts(0, "all")
-                getPageCount("all") 
-            }
-        }, 3000)
-        if(state.currentTexts.length === 0) {
-            getTexts(0, "all")
-            getPageCount("all") 
-        }
-    }, []) 
+          getTexts(0, "all");
+          getPageCount("all");
+        }, 2000);
+      }, []); 
+    
+      useEffect(() => {
+        const retryTimer = setTimeout(() => {
+          if (state.currentTexts.length === 0) {
+            getTexts(0, "all");
+            getPageCount("all");
+            setState((prevState) => ({ ...prevState, retryCount: prevState.retryCount + 1 }));
+          }
+        }, 2000);
+    
+        return () => clearTimeout(retryTimer);
+      }, [state.currentTexts.length, state.retryCount]);
+
+
 
     // sets the total page count
     const getPageCount = (selectedLevel) => { // set to 0 so that component doesn't load til done
