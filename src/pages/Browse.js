@@ -25,6 +25,16 @@ const Browse = () => {
     useEffect(() => { // get texts from all levels on start
         getTexts(0, "all")
         getPageCount("all") 
+        setTimeout(() => {
+            if(state.currentTexts.length === 0) { // in case it doesn't load initially
+                getTexts(0, "all")
+                getPageCount("all") 
+            }
+        }, 3000)
+        if(state.currentTexts.length === 0) {
+            getTexts(0, "all")
+            getPageCount("all") 
+        }
     }, []) 
 
     // sets the total page count
