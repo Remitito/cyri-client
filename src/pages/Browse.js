@@ -38,7 +38,6 @@ const Browse = () => {
             setState((prevState) => ({ ...prevState, retryCount: prevState.retryCount + 1 }));
           }
         }, 2000);
-    
         return () => clearTimeout(retryTimer);
       }, [state.currentTexts.length, state.retryCount]);
 
@@ -201,7 +200,13 @@ const Browse = () => {
             <>
             <Loading className='bebasNeue'>
             Loading... <LoadingSpinner/></Loading>
-            <LoadingMessage>If you are a first time user, it might take a moment to load.</LoadingMessage>
+            <>
+                {state.retryCount <= 3 ? <LoadingMessage>If you are a first time user, it might take a moment to load.</LoadingMessage>
+                :
+                <LoadingMessage>Almost there! Thanks for your patience.</LoadingMessage>
+                }
+            </>
+            
             </>}
         </>
     )}
