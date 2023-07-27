@@ -24,42 +24,44 @@ const Browse = () => {
     const [state, setState] = useState(initialState)
 
     useEffect(() => {
-        setTimeout(() => {
-          getTexts(0, "all");
-          getPageCount("all");
-        }, 1000);
-      }, []); 
+        Promise.all([getTexts(0, 'all'), getPageCount('all')])
+          .then(([texts, pageCount]) => {
+            setState(oldValue => ({
+              ...oldValue,
+              currentTexts: texts,
+              totalPages: pageCount
+            }));
+          })
+          .catch(error => {
+                console.log(error)
+            });
+      }, []);
     
       useEffect(() => {
         const retryTimer = setTimeout(() => {
           if (state.currentTexts.length === 0) {
-            getTexts(0, "all");
-            getPageCount("all");
             setState((prevState) => ({ ...prevState, retryCount: prevState.retryCount + 1 }));
           }
-        }, 1000);
+        }, 3500);
         return () => clearTimeout(retryTimer);
       }, [state.currentTexts.length, state.retryCount]);
 
 
 
     // sets the total page count
-    const getPageCount = (selectedLevel) => { // set to 0 so that component doesn't load til done
-            setState(oldValue => ({...oldValue, 
-                totalPages: 0,
-            })) 
-            axios.post('https://can-you-read-it-api.onrender.com/count', {
-                level: selectedLevel
-            })
-            .then(response => {
-                let totalPages = parseInt(response.data)
-                setState(oldValue => ({...oldValue, 
-                    totalPages: totalPages,
-                    page: 0,
-                    level: selectedLevel
-                }))
-            })
-        }
+    const getPageCount = selectedLevel => {
+        return axios
+          .post('https://can-you-read-it-api.onrender.com/count', {
+            level: selectedLevel
+          })
+          .then(response => {
+            let totalPages = parseInt(response.data);
+            return totalPages;
+          })
+          .catch(error => {
+            return 0;
+          });
+      };
 
     const changeLevel = (level) => {
         if(level === state.level) {return} // if level already shown 
@@ -67,21 +69,19 @@ const Browse = () => {
         getTexts(0, level)
     }
 
-    const getTexts = async (pageNum, level) => {
-        setState(oldValue => ({...oldValue,  // clear current texts
-                currentTexts: []
-        }))
-        axios.post('https://can-you-read-it-api.onrender.com/browse', {
+    const getTexts = (pageNum, level) => {
+        return axios
+          .post('https://can-you-read-it-api.onrender.com/browse', {
             pageNum: pageNum,
             level: level
           })
-          .then((response) => {
-            let texts = response.data 
-            setState(oldValue => ({...oldValue, 
-                currentTexts: texts
-                }))
-            })
-        } 
+          .then(response => {
+            return response.data;
+          })
+          .catch(error => {
+            return [];
+          });
+      };
     
 
     const nextPage = () => {
