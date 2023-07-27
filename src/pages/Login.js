@@ -1,19 +1,15 @@
 import React, {useState, useContext} from 'react';
 import {FormWrapper, Form, FormButton, FormError, FormRow, 
-  FormTextBox, NavMenuItem, NavMenuItemLink, ChangeMethod} from '../components/LoginStyle'
+  FormTextBox, NavMenuItem, NavMenuItemLink, ChangeMethod, LoginRegisterTitle} from '../components/LoginStyle'
 import {useNavigate, NavLink} from 'react-router-dom'
 import { UserContext } from '../UserContext'
 
 const axios = require('axios').default;
 
 const initialState = {
-    username: "",
-    email: "",
+    usernameEmail: "",
     password: "",
-    loginMethod: "username"
-}
-
-
+    }
 
 const Login = () => {
     const {logged, login} = useContext(UserContext)
@@ -22,12 +18,11 @@ const Login = () => {
     const navigate = useNavigate()
 
     const handleResponse = (response) => {
-      if(response == "fail") {
-        setError("Invalid user credentials")
+      if(response.data == "fail") {
+        setError("Invalid credentials")
       }
       else {
-        localStorage.setItem('user', state.username)
-        
+        localStorage.setItem('user', response.data)
         setState(initialState)
         login(true)
         navigate('/')
@@ -36,23 +31,14 @@ const Login = () => {
 
     const handleSubmit = async e => {
       e.preventDefault();
-      if(state.loginMethod === 'email') {
-        if(state.email.length === 0) {
-          setError("Please enter your email")
+      if(state.usernameEmail.length === 0) {
+          setError("Please enter your username or email")
           return
-        }
-      }
-      else {
-        if(state.username.length === 0) {
-          setError("Please enter your username")
-          return
-        }
       }
       if (state.password.length == 0) {
         setError("Please enter your password")
         return
       }
-      console.log(state)
       axios.post('https://can-you-read-it-api.onrender.com/login', {
         state: state
       })
@@ -69,41 +55,27 @@ const Login = () => {
       <FormWrapper>
         <Form className='josefinSans' onSubmit={handleSubmit}>
           <FormRow maxWidth="100%">
-            <h1>Login</h1>
+            <LoginRegisterTitle>Login</LoginRegisterTitle>
             <NavMenuItem>
               <NavMenuItemLink as={NavLink} to="/register">
                   Click to Register
               </NavMenuItemLink>
             </NavMenuItem>
             </FormRow>
-            {state.loginMethod === "username" ?
             <>
             <FormRow>
-              <FormTextBox width="80%" name='username' type='text' value={state.username}
-              onChange={handleChange} placeholder='Username'/>
+              <FormTextBox width="80%" name='usernameEmail' type='text' value={state.usernameEmail}
+              onChange={handleChange} placeholder='Username/Email'/>
             </FormRow>
-            <FormRow>
-              <ChangeMethod className='josefinSans' type="button" name='loginMethod' value='email' onClick={handleChange}>Login with email</ChangeMethod>
-            </FormRow>
+
             </>
-            :
-            <>
-            <FormRow>
-              <FormTextBox name='email' type='text' value={state.email} 
-              onChange={handleChange} placeholder='Email'/>
-            </FormRow>
-            <FormRow>
-            <ChangeMethod className='josefinSans'  type="button" name='loginMethod' value='username' onClick={handleChange}>Login with username</ChangeMethod>
-            </FormRow>
-            </>
-            }
             <FormRow>
               <FormTextBox name='password' type='password' value={state.password} 
               onChange={handleChange} placeholder='Password'/>
             </FormRow>
             <FormRow changeToColumn maxWidth="80%" addSpace>
               <FormButton type="submit" name="show" value="form">Login</FormButton>
-              <FormButton type="button" onClick={() => {setState({username: "", email: "", password: ""})}}>Clear</FormButton>
+              <FormButton type="button" onClick={() => {setState({usernameEmail: "", password: ""})}}>Clear</FormButton>
             </FormRow>
             <NavMenuItem>
               <NavMenuItemLink as={NavLink} to="/user/forgot">

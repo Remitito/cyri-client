@@ -10,30 +10,6 @@ import axios from 'axios'
 const Home = () => {
   const {action, setAction} = useContext(ActionContext)
 
-  useEffect(() => { // so that it pre loads before user hits Browse
-    getTexts(0, "all")
-    getPageCount("all") 
-  })
-
-  const getTexts = async (pageNum, level) => {
-    axios.post('https://can-you-read-it-api.onrender.com/browse', {
-        pageNum: pageNum,
-        level: level
-      })
-      .then((response) => {
-        console.log(response.data)
-    }) 
-  }
-    // sets the total page count
-  const getPageCount = (selectedLevel) => { // set to 0 so that component doesn't load til done
-    axios.post('https://can-you-read-it-api.onrender.com/count', {
-        level: selectedLevel
-    })
-    .then(response => {
-        console.log(response.data)
-    })
-  }
-
   return (
       <Container width={"60%"}>
         <ContInfo>

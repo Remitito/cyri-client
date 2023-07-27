@@ -1,5 +1,5 @@
 import React, {useState, useContext} from 'react';
-import {FormWrapper, Form, FormButton,
+import {FormWrapper, Form, FormButton, LoginRegisterTitle,
     FormError, FormInfo, NavMenuItem, NavMenuItemLink,
     FormRow, FormTextBox} from '../components/RegisterStyle'
 import {useNavigate, NavLink} from 'react-router-dom'
@@ -84,7 +84,7 @@ const Register = () => {
       <FormWrapper>
         <Form className='josefinSans' onSubmit={handleSubmit}>
           <FormRow maxWidth="100%">
-              <h1>Register</h1>
+              <LoginRegisterTitle>Register</LoginRegisterTitle>
               <NavMenuItem>
                       <NavMenuItemLink 
                       as={NavLink} to="/login">

@@ -8,7 +8,6 @@ export const FormTextBox = styled.input`
     ::placeholder,
     ::-webkit-input-placeholder {
         font-size: 1.2rem;
-        font-style: italic;
     }
 `
 export const FormButton = styled.button `
@@ -46,9 +45,9 @@ export const NavMenuItem = styled.li `
 `
 
 export const NavMenuItemLink = styled.a `
-    text-decoration: none;
     color: #ebc88b;
     margin: auto;
+    text-decoration: none;
     &:hover{
         color: #9c7e38;
         border-bottom: 0.3rem solid #ebc08b;
@@ -144,4 +143,9 @@ export const FormError = styled.div `
 export const FormInfo = styled.p`
     font-size: 1.5rem;
     margin: auto;
+`
+
+export const LoginRegisterTitle = styled.h1 `
+    font-family: 'Shift';
+    font-size: 2rem;
 `

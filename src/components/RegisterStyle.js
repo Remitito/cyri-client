@@ -129,3 +129,8 @@ export const FormInfo = styled.p`
     font-size: 1.5rem;
     margin: auto;
 `
+
+export const LoginRegisterTitle = styled.h1 `
+    font-family: 'Shift';
+    font-size: 2rem;
+`
