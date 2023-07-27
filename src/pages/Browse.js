@@ -14,7 +14,8 @@ const initialState = {
     level: "all",
     page: 0, // page when viewing all texts
     totalPages: 0,
-    retryCount: 0
+    retryCount: 0,
+    loading: false
   }
 
 const Browse = () => {
@@ -24,17 +25,8 @@ const Browse = () => {
     const [state, setState] = useState(initialState)
 
     useEffect(() => {
-        Promise.all([getTexts(0, 'all'), getPageCount('all')])
-          .then(([texts, pageCount]) => {
-            setState(oldValue => ({
-              ...oldValue,
-              currentTexts: texts,
-              totalPages: pageCount
-            }));
-          })
-          .catch(error => {
-                console.log(error)
-            });
+        getTexts(0, 'all')
+        getPageCount('all')
       }, []);
     
       useEffect(() => {
@@ -46,8 +38,6 @@ const Browse = () => {
         return () => clearTimeout(retryTimer);
       }, [state.currentTexts.length, state.retryCount]);
 
-
-
     // sets the total page count
     const getPageCount = selectedLevel => {
         return axios
@@ -56,6 +46,10 @@ const Browse = () => {
           })
           .then(response => {
             let totalPages = parseInt(response.data);
+            setState(oldValue => ({
+                ...oldValue,
+                totalPages: response.data
+              }))
             return totalPages;
           })
           .catch(error => {
@@ -64,8 +58,12 @@ const Browse = () => {
       };
 
     const changeLevel = (level) => {
+        setState(prevState => ({
+            ...prevState,
+            loading: true
+        }))
         if(level === state.level) {return} // if level already shown 
-        getPageCount(level)
+        const newPageCount = getPageCount(level)
         getTexts(0, level)
     }
 
@@ -76,6 +74,12 @@ const Browse = () => {
             level: level
           })
           .then(response => {
+              console.log(response.data)
+            setState(prevState => ({
+              ...prevState,
+              currentTexts: response.data,
+              loading: false,
+            }));
             return response.data;
           })
           .catch(error => {
@@ -86,16 +90,20 @@ const Browse = () => {
 
     const nextPage = () => {
         if(state.page + 1 === state.totalPages) {return} //last page 
-        setState(oldValue => ({...oldValue,
-            page: state.page + 1}))
         getTexts(state.page + 1, state.level)
+        setState(oldValue => ({...oldValue,
+            page: state.page + 1,
+            loading: true
+        }))
     }
 
     const previousPage = () => {
         if(state.page === 0) {
             return} 
         setState(oldValue => ({...oldValue,
-            page: state.page - 1}))
+            page: state.page - 1,
+            loading: true
+        }))
         getTexts(state.page - 1, state.level)
     }
 
@@ -146,69 +154,73 @@ const Browse = () => {
         </TableRow>
     )
 
-        return (
+    return (
+        <>
+          {state.loading ? (
             <>
-            {state.currentTexts.length > 0 && state.totalPages > 0 ? 
-                <Container>
-                    <TopRow>
-                        <BigButton as={NavLink} to="/user/forgot" className='bebasNeue'>I want a text taken down</BigButton>
-                        <Title className='kanit'>Browse Texts</Title>
-                        {state.currentTexts.length > 0 ?
-                        <PageNavWrapper>
-                            {state.currentTexts.length > 0 ?
-                            <>
-                            <ArrowWrapper className='bebasNeue' onClick={previousPage}>
-                                <IoIosArrowDropleft onClick={previousPage} />Back                    
-                            </ArrowWrapper>
-                            <PageLabel className='bebasNeue'>Page {state.page + 1}/{state.totalPages}</PageLabel>
-                            <ArrowWrapper className='bebasNeue' onClick={nextPage}>
-                                <IoIosArrowDropright onClick={nextPage} />Next                    
-                            </ArrowWrapper>
-                            </>
-                            :
-                            <>
-                            <ArrowWrapper className='bebasNeue' onClick={previousPage}>
-                                <IoIosArrowDropleft onClick={previousPage} />Back                    
-                            </ArrowWrapper>
-                            <PageLabel className='bebasNeue'>Page {state.levelPage + 1}/
-                            {state.currentTexts.length > 1 ? state.currentTexts.length - 1 : state.currentTexts.length}</PageLabel>
-                            <ArrowWrapper className='bebasNeue' onClick={nextPage}>
-                                <IoIosArrowDropright onClick={nextPage} />Next                    
-                            </ArrowWrapper>
-                            </>
-                        }
-                        </PageNavWrapper>
-                    : <></>}
-                    </TopRow>
-                    <Row>
-                        {mapLevels}
-                        <TableCategory className='rubixMoonrocks' 
-                        backgroundColor={"grey"} width="100%" value="all"
-                        onClick={(e) => changeLevel("all")}
-                        > ALL
-                    </TableCategory>
-                    </Row>
-                    <Table>
-                        <TableBody>
-                            {state.level !== "all" ? mapSomePages 
-                            : mapAllPages
-                            }
-                        </TableBody>
-                    </Table>
-                </Container>
-            :   
-            <>
-            <Loading className='bebasNeue'>
-            Loading... <LoadingSpinner/></Loading>
-            <>
-                {state.retryCount <= 2 ? <LoadingMessage>If you are a first time user, it might take a while to load.</LoadingMessage>
-                :
-                <LoadingMessage>Almost there! Thanks for your patience.</LoadingMessage>
-                }
+              <Loading className='bebasNeue'>
+                Loading... <LoadingSpinner/>
+              </Loading>
+              <>
+                <LoadingMessage>Loading. Please wait!</LoadingMessage>
+              </>
             </>
-            
-            </>}
+          ) : (
+            <>
+              {state.currentTexts.length > 0 && state.totalPages > 0 ? (
+                <Container>
+                  <TopRow>
+                    <BigButton as={NavLink} to="/user/forgot" className='bebasNeue'>I want a text taken down</BigButton>
+                    <Title className='kanit'>Browse Texts</Title>
+                    {state.currentTexts.length > 0 ? (
+                      <PageNavWrapper>
+                        <>
+                          <ArrowWrapper className='bebasNeue' onClick={previousPage}>
+                            <IoIosArrowDropleft onClick={previousPage} />Back                    
+                          </ArrowWrapper>
+                          <PageLabel className='bebasNeue'>Page {state.page + 1}/{state.totalPages}</PageLabel>
+                          <ArrowWrapper className='bebasNeue' onClick={nextPage}>
+                            <IoIosArrowDropright onClick={nextPage} />Next                    
+                          </ArrowWrapper>
+                        </>
+                      </PageNavWrapper>
+                    ) : (
+                      <></>
+                    )}
+                  </TopRow>
+                  <Row>
+                    {mapLevels}
+                    {/* <TableCategory
+                      className='rubixMoonrocks'
+                      backgroundColor={"grey"} width="100%" value="all"
+                      onClick={(e) => changeLevel("all")}
+                    > ALL
+                    </TableCategory> */}
+                  </Row>
+                  <Table>
+                    <TableBody>
+                      {state.level !== "all" ? mapSomePages : mapAllPages}
+                    </TableBody>
+                  </Table>
+                </Container>
+              ) : (
+                <>
+                  <Loading className='bebasNeue'>
+                    Loading... <LoadingSpinner/>
+                  </Loading>
+                  <>
+                    {state.retryCount <= 2 ? (
+                      <LoadingMessage>If you are a first time user, it might take a while to load.</LoadingMessage>
+                    ) : (
+                      <LoadingMessage>Almost there! Thanks for your patience.</LoadingMessage>
+                    )}
+                  </>
+                </>
+              )}
+            </>
+          )}
         </>
-    )}
+      );
+    }
 
 export default Browse;
