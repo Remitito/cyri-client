@@ -117,7 +117,7 @@ const Check = () => {
       <Form className='josefinSans form" ? ' onSubmit={handleSubmit}>
         {state.show === "form" ? 
         <>
-          <h1 className="arima">Check a Text's Level</h1>
+          <h1 style={{fontFamily: "Shift"}}>Check a Text's Level</h1>
           <FormInfo className="arima">Paste the text you want to check into the box below:</FormInfo>
           <FormTextArea name="text" value={state.text}  onChange={handleChange} />
           <FormButton  hide={error.length > 0} margin="30px 0 0 27%" smallerWidth="75%" name="show" value="result" type="submit">Show Level</FormButton>

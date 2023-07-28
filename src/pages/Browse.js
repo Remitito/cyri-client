@@ -60,7 +60,9 @@ const Browse = () => {
     const changeLevel = (level) => {
         setState(prevState => ({
             ...prevState,
-            loading: true
+            loading: true,
+            page: 0,
+            totalPages: 1
         }))
         if(level === state.level) {return} // if level already shown 
         const newPageCount = getPageCount(level)
