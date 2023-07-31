@@ -212,7 +212,7 @@ const Browse = () => {
                   </Loading>
                   <>
                     {state.retryCount <= 2 ? (
-                      <LoadingMessage>If you are a first time user, it might take a while to load.</LoadingMessage>
+                      <LoadingMessage>Loading. Please wait.</LoadingMessage>
                     ) : (
                       <LoadingMessage>Almost there! Thanks for your patience.</LoadingMessage>
                     )}
