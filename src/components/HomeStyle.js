@@ -20,6 +20,13 @@ export const Row = styled.div `
 
 `
 
+export const MainLabel = styled.label `
+    font-size: 1.5rem;
+`
+export const MainHeader = styled.h2 `
+    font-size: 2.5rem;
+`
+
 export const Column = styled.div `
     width: ${props => props.width ? props.width : "auto"};
 `

@@ -1,4 +1,4 @@
-import { Container, Row, BigButton, ContInfo, NavMenu, NavMenuItem } from "../components/HomeStyle";
+import { Container, Row, BigButton, ContInfo, MainHeader, MainLabel, NavMenu, NavMenuItem } from "../components/HomeStyle";
 import {NavLink} from 'react-router-dom'
 import { ActionContext } from '../UserContext'
 import { useContext, useEffect } from "react";
@@ -15,8 +15,8 @@ const Home = () => {
         <ContInfo>
           <GiRead className="icon" size={70} color="#ebc88b"/>
         {action == "share" ? <h2 style={{color: "#9c7e38", textDecoration: "underline"}}>Your Text Has Been Successfully Uploaded!</h2> : 
-        <h2 className="kanit">Welcome to Can You Read It!</h2>}
-          <label className="ralewayHome">Check the CEFR level (A1 - C2) of a digital text or browse other texts of the same level</label>
+        <MainHeader className="kanit">Welcome to Can You Read It!</MainHeader>}
+          <MainLabel className="ralewayHome">Check the CEFR level (A1 - C2) of a digital text or browse other texts of the same level</MainLabel>
         </ContInfo>
         <Row>
         <NavMenu>
