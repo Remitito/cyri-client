@@ -32,6 +32,11 @@ export const FormButton = styled.button `
         margin-top: 10px;
         display: ${({hideMobile}) => hideMobile ? "none" : ""}
     }
+
+    @media only screen and (max-width: 767px) {
+        width: 100%;
+        font-size: 1.5rem;
+    }
 `
 
 export const NavMenuItem = styled.li `
@@ -92,6 +97,9 @@ export const FormWrapper = styled.div `
     @media screen and (max-height: 480px) {
         max-height: 240vh;
     }
+    @media only screen and (max-width: 767px) {
+        margin: auto;
+    }
 `
 
 export const Form = styled.form `
@@ -107,6 +115,10 @@ export const Form = styled.form `
 
     @media screen and (max-width: 960px) {
         margin-left: 30%;
+    }
+
+    @media only screen and (max-width: 767px) {
+        margin: auto;
     }
 
 `

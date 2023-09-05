@@ -9,6 +9,11 @@ export const FormTextBox = styled.input`
     ::-webkit-input-placeholder {
         font-size: 1.2rem;
     }
+
+    @media only screen and (max-width: 767px) {
+        width: 100%;
+    }
+
 `
 export const FormButton = styled.button `
     background-color: #ebc88b;
@@ -107,6 +112,10 @@ export const FormWrapper = styled.div `
     @media screen and (max-height: 480px) {
         max-height: 240vh;
     }
+
+    @media only screen and (max-width: 767px) {
+        margin: auto;
+    }
 `
 
 export const Form = styled.form `
@@ -122,6 +131,11 @@ export const Form = styled.form `
 
     @media screen and (max-width: 960px) {
         margin-left: 30%;
+    }
+
+    @media only screen and (max-width: 767px) {
+        margin: auto;
+        width: 100%;
     }
 
 `

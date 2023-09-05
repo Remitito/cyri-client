@@ -55,6 +55,7 @@ export const BigButton = styled.button `
     @media screen and (max-width: 960px) {
         display: ${props => props.show ? "" : "none"};
     }
+
 `
 
 export const Table = styled.div `
@@ -108,12 +109,17 @@ export const TableCategory = styled.button `
 @media screen and (max-width: 960px) {
     width: ${props => props.width ? props.width : "20%"};
     }
+    
+    @media only screen and (max-width: 767px) {
+        font-size: 1.5rem;
+    }
+
 `
 
 export const TableButton = styled.button`
     width: 70%;
     background-color: #49426c;
-    font-size: large;
+    font-size: x-large;
     color: #ebc88b;  
     border-radius: 2rem;
     line-height: 2;
@@ -124,6 +130,10 @@ export const TableButton = styled.button`
     }
         @media screen and (max-width: 960px) {
     width: 100%};
+
+    @media only screen and (max-width: 767px) {
+        font-size: large;
+    }
 `
 
 export const TableButtonDiv = styled.div`
@@ -172,6 +182,9 @@ export const Title = styled.h1 `
     font-size: xx-large;
     line-height: 0;
     margin-top: 30px;
+    @media only screen and (max-width: 767px) {
+        display: none;
+    }
 `
 
 export const Loading = styled.h1 `
@@ -209,6 +222,10 @@ export const ArrowWrapper = styled.div `
           box-shadow: inset 200px 0 0 0 #49426c;
           color: #9c7e38;
       }
+
+      @media only screen and (max-width: 767px) {
+        height: 60%;
+    }
 `
 
 export const PageNavWrapper = styled.div `

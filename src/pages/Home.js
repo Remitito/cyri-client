@@ -36,7 +36,7 @@ const Home = () => {
           <>
           <NavMenuItem>
           <BigButton as={NavLink} onClick={() => {setAction("")}} to="/check" className='bebasNeue'>
-              Check a text's level 
+              Check text's level 
           </BigButton>
           </NavMenuItem>
           <NavMenuItem>
@@ -48,7 +48,7 @@ const Home = () => {
           </NavMenu>
         </Row>
         <Row>
-          <p>Contact: canyoureadit@yandex.com</p>
+          <p style={{marginTop: '50px'}}>Contact: canyoureadit@yandex.com</p>
         </Row>
       </Container>
   );

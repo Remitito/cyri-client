@@ -26,6 +26,14 @@ export const Author = styled.div `
         color: #9c7e38;
         transition: 0.2s ease-in;
     }
+
+    @media only screen and (max-width: 767px) {      
+      height: 60px;
+      line-height: 1.5;
+      margin-left: 10px;
+      width: 150px;
+  }
+    
 `
 
 export const TextUrl = styled.a `
@@ -128,6 +136,10 @@ export const MainText = styled.div `
   margin: auto;
   font-weight: 600;
   padding: 3%;
+
+  @media only screen and (max-width: 767px) {
+    margin-top: 50px;
+}
 ` 
 
 export const TextWrapperRow = styled.div `
@@ -157,6 +169,10 @@ export const LogoWrapper = styled.div `
           box-shadow: inset 300px 0 0 0 #49426c;
           color: #ebc88b;
       }
+
+  @media only screen and (max-width: 767px) {
+        font-size: 1rem;
+    }
 `
 
 

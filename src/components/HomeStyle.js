@@ -10,6 +10,10 @@ export const Container = styled.div `
     @media screen and (max-width: 960px) {
         margin-right: 150px;
     }
+    @media only screen and (max-width: 767px) {
+        margin: auto;
+        margin-top: 40px;
+    }
 `
 export const Row = styled.div `
     display: flex;
@@ -22,6 +26,10 @@ export const Row = styled.div `
 
 export const MainLabel = styled.label `
     font-size: 1.5rem;
+
+    @media only screen and (max-width: 767px) {
+        display: none;
+    }
 `
 export const MainHeader = styled.h2 `
     font-size: 2.5rem;
@@ -48,10 +56,16 @@ export const BigButton = styled.button `
         border: 0.2rem solid #9c7e38;
         transition: 0.2s ease-in;
     }
+    @media only screen and (max-width: 767px) {
+        width: 160px;
+        font-size: x-large;
+        margin-right: 30px;
+      }
 `
 
 export const ContInfo = styled.div `
     text-align: center;
+
 `
 
 export const NavMenu = styled.ul `
@@ -64,6 +78,8 @@ export const NavMenu = styled.ul `
         transition: 0.5s all ease-in;
         justify-content: space-evenly;
     }
+
+    
 `
 
 export const NavMenuItem = styled.li `
@@ -77,6 +93,9 @@ export const NavMenuItem = styled.li `
     @media screen and (max-width: 960px) {
         margin: auto;
         height: 70px;
+    }
+    @media only screen and (max-width: 767px) {
+        padding: 0rem 0rem;
     }
 `
 

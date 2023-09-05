@@ -83,6 +83,10 @@ export const FormButton = styled.button `
         width: ${({smallerWidth}) => smallerWidth ? smallerWidth : ""};
         margin: 10px 0 0 13%;
     }
+
+    @media only screen and (max-width: 767px) {
+        font-size: x-large;
+    }
 `
 
 export const FormRow = styled.div `

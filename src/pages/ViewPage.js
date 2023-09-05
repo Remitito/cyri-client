@@ -80,7 +80,7 @@ const ViewPage = () => {
           <TextWrapperColumn>
             <LogoWrapper as={NavLink} to="/browse">
               <IoArrowUndoOutline size={50}/>
-              Go back  
+              Back  
             </LogoWrapper>
           </TextWrapperColumn>
           <h2>{page.title}</h2>

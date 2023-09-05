@@ -120,7 +120,8 @@ const Check = () => {
           <h1 style={{fontFamily: "Shift"}}>Check a Text's Level</h1>
           <FormInfo className="arima">Paste the text you want to check into the box below:</FormInfo>
           <FormTextArea name="text" value={state.text}  onChange={handleChange} />
-          <FormButton  hide={error.length > 0} margin="30px 0 0 27%" smallerWidth="75%" name="show" value="result" type="submit">Show Level</FormButton>
+          <FormButton  hide={error.length > 0} margin="30px 0 0 27%" smallerWidth="75%" name="show" value="result" type="submit">
+            Show Level</FormButton>
           {error && (
             <FormRow marginTop="20px">
               <FormError border={error.length > 0} background={error.length > 0}><p>{error}</p></FormError>
@@ -161,7 +162,7 @@ const Check = () => {
           </FormRow>
           <FormRow marginTop="20px" switchToColumn addSpace>
             <FormButton hide={error.length > 0} width="80%" name="show" value="form" smallerWidth="60%"
-            onClick={shareText}>Post Text</FormButton> 
+            onClick={shareText}>Confirm</FormButton> 
             <FormButton hide={error.length > 0} width="80%" name="show" value="form" smallerWidth="60%"
             onClick={goBack}>Go Back</FormButton>
           </FormRow> 

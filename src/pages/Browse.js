@@ -131,7 +131,7 @@ const Browse = () => {
         </TableCategory>
         <TableButtonDiv as={NavLink} to={`/pages/${text._id}`}>
             <TableButton className='bebasNeue'>
-            VIEW TEXT
+            VIEW
             </TableButton>
         </TableButtonDiv>
         </TableRow>
@@ -150,7 +150,7 @@ const Browse = () => {
         </TableCategory>
         <TableButtonDiv as={NavLink} to={`/pages/${text._id}`}>
             <TableButton className='bebasNeue'>
-            VIEW TEXT
+            VIEW
             </TableButton>
         </TableButtonDiv>
         </TableRow>
