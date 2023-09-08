@@ -4,6 +4,7 @@
 body {
   background-size: 100%;
   background-position: center;
+  background-image: url('/public/background.jpg');
   margin: 0px;
 }
 
