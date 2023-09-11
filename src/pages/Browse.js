@@ -123,7 +123,7 @@ const Browse = () => {
         <TableData id="textTitle" className='bebasNeue'>
             {text.title}
         </TableData> 
-        <TableDate>Uploaded by {text.user} on {text.dateString}</TableDate>
+        <TableDate>Uploaded by {text.user ? text.user : "Guest"} on {text.dateString}</TableDate>
         <TableCategory className='rubixMoonrocks' value={text.level}
         backgroundColor={levelColors[levels.indexOf(text.level)]}
         onClick={(e) => changeLevel(text.level)}>
@@ -192,12 +192,6 @@ const Browse = () => {
                   </TopRow>
                   <Row>
                     {mapLevels}
-                    {/* <TableCategory
-                      className='rubixMoonrocks'
-                      backgroundColor={"grey"} width="100%" value="all"
-                      onClick={(e) => changeLevel("all")}
-                    > ALL
-                    </TableCategory> */}
                   </Row>
                   <Table>
                     <TableBody>
