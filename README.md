@@ -10,6 +10,10 @@ To run it locally: 1) Clone the repo 2) Enter 'npm install' in the terminal 3) E
 
 The live version can be found at: https://can-you-read-it-atd5.onrender.com/
 
+**API / Back End**
+
+Can You Read It's back end repo can be found here: https://github.com/Remitito/cyri-api
+
 **Features**
 
 - Users can paste in a text they find and be told the CEFR level (A1-C2) of the text
