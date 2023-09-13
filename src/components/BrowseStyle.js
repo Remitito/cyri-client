@@ -59,12 +59,13 @@ export const BigButton = styled.button `
 `
 
 export const Table = styled.div `
+    border: solid #49426c;
     margin:  auto;
     width: 100%;
+    margin-top: 20px;
 `
 
 export const TableBody = styled.div `
-    margin-top: 20px;
     justify-content: center;
     flex-direction: column;
     display: flex;
