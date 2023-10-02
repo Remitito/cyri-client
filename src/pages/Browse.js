@@ -1,13 +1,12 @@
 import React, {useEffect, useState} from 'react'
 import axios from 'axios'
-import {Container, Column, ColumnItem, 
-    Row, BigButton, Table, TableBody, TableRow, SmallButton,
-    TableData, TableCategory, TitleSection, Title, ArrowWrapper, PageLabel, TableHeader,
+import {Container, Column, 
+    Row, BigButton, Table, TableBody, TableRow,
+    TableData, TableCategory, Title, ArrowWrapper, PageLabel,
     TableButton, TableButtonDiv, TableDate, Loading, LoadingMessage, PageNavWrapper, TopRow} from '../components/BrowseStyle'
 import LoadingSpinner from '../components/spinner/spinner'
 import { IoIosArrowDropleft, IoIosArrowDropright} from "react-icons/io";
 import {NavLink} from 'react-router-dom'
-import { LevelContext} from '../UserContext'
 
 const initialState = {
     currentTexts: [],
@@ -28,15 +27,7 @@ const Browse = () => {
         getTexts(0, 'all')
         getPageCount('all')
       }, []);
-    
-      useEffect(() => {
-        const retryTimer = setTimeout(() => {
-          if (state.currentTexts.length === 0) {
-            setState((prevState) => ({ ...prevState, retryCount: prevState.retryCount + 1 }));
-          }
-        }, 3500);
-        return () => clearTimeout(retryTimer);
-      }, [state.currentTexts.length, state.retryCount]);
+  
 
     // sets the total page count
     const getPageCount = selectedLevel => {
@@ -65,7 +56,6 @@ const Browse = () => {
             totalPages: 1
         }))
         if(level === state.level) {return} // if level already shown 
-        const newPageCount = getPageCount(level)
         getTexts(0, level)
     }
 
@@ -118,6 +108,8 @@ const Browse = () => {
             </TableCategory>
         </Column>
 )
+
+    // Maps texts of all levels (default option)
     const mapAllPages = state.currentTexts.map((text, i) =>   
         <TableRow backgroundColor={i % 2 == 0 ? "#e6e6ff" : "#d7c1f5"}> 
         <TableData id="textTitle" className='bebasNeue'>
@@ -137,6 +129,7 @@ const Browse = () => {
         </TableRow>
     )
 
+    // Maps only pages that match requested levels
     let mapSomePages = state.currentTexts.map((text, p) => 
         <TableRow backgroundColor={p % 2 == 0 ? "#e6e6ff" : "#d7c1f5"}> 
         <TableData className='bebasNeue'>

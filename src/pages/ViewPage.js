@@ -50,7 +50,7 @@ const ViewPage = () => {
         preview: response.data.preview
       })
       })
-    }, []) // array to stop it running repeatedly  
+    }, [])
 
     const nextPage = () => {
       axios({

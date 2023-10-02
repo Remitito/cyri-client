@@ -1,19 +1,18 @@
 import {FormWrapper, Form, FormTextArea, FormButton,
-FormFieldSet, FormError, FormInfo, ErrorWrapper, Checkbox,
-FormRow, FormColumn, FormTextBox, NavMenuItem, BigButton, ErrorRow} from '../components/CheckStyle'
+FormError, FormInfo, Checkbox, FormRow, FormColumn, FormTextBox} from '../components/CheckStyle'
 import React, {useState, useContext} from 'react';
 import { ActionContext } from '../UserContext';
-import {useNavigate, NavLink} from 'react-router-dom'
+import {useNavigate} from 'react-router-dom'
 const axios = require('axios').default;
 
 const initialState = {
   language: "english",
   text: "",
-  show: "form", // conditionally renders first page of form
+  show: "form", // conditionally renders different pages of form
   level: "",
   url: "",
   title: "",
-  ownText: false
+  ownText: false // if own text is true then URL does not need to be provided
 }
 
 var URLRegex = /[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)?/gi;
@@ -27,6 +26,7 @@ const Check = () => {
   const {action, setAction} = useContext(ActionContext)
   const navigate = useNavigate()
 
+  // error checking then pass to backend to get the text's level assessment 
   const handleSubmit = e => {
     e.preventDefault();
     if(state.text.split(" ").length < 10) {
@@ -53,6 +53,8 @@ const Check = () => {
     })
   }
 
+  // update local storage to make sure users don't post too many texts
+  // pass text to backend to be stored on database
   const shareText = e => {
     e.preventDefault();
     try {
@@ -93,7 +95,6 @@ const Check = () => {
     .then(setError(""))
     .then(setAction("share"))
     .then(() => {
-        let textsShared = localStorage.getItem('posts')
         localStorage.setItem('posts', currentDate)
     })
     .then(navigate('/'))

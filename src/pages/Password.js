@@ -10,7 +10,6 @@ const initialState = {
     newPass: "",
 }
 
-// Add some formatting, especially password-checking
 const Password = () => {
     const [state, setState] = useState(initialState)
     const [error, setError] = useState("")

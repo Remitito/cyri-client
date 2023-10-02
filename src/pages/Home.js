@@ -8,7 +8,7 @@ import axios from 'axios'
 
 
 const Home = () => {
-  const {action, setAction} = useContext(ActionContext)
+  const {action, setAction} = useContext(ActionContext) // if a text has been shared then it will show a message on homepage
 
   return (
       <Container width={"60%"}>

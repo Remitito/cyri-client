@@ -18,7 +18,6 @@ const usernameRegex = /^(?=.*[A-Za-z0-9]).{6,12}$/
 const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/
 const emailRegex = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
 
-// Add some formatting, especially password-checking
 const Register = () => {
     const [state, setState] = useState(initialState)
     const [error, setError] = useState("")

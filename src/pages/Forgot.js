@@ -1,5 +1,5 @@
 import { NavMenuItem } from '../components/HomeStyle';
-const Error = () => {
+const Forgot = () => {
   return (
     <div style={{textAlign: "center"}}>
         <NavMenuItem>
@@ -10,4 +10,4 @@ const Error = () => {
     </div>
   );
 };
-export default Error;
+export default Forgot;
